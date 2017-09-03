@@ -1,0 +1,8 @@
+起動コマンド
+unicorn_rails -c config/unicorn.rb -D -E development
+停止コマンド
+kill -QUIT `cat tmp/pids/unicorn.pid`
+再起動コマンド
+kill -HUP `cat tmp/pids/unicorn.pid`
+緩やかな再起動コマンド
+kill -USR2 `cat tmp/pids/unicorn.pid`

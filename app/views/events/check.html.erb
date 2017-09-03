@@ -1,0 +1,94 @@
+<div>
+
+  <nav class="navbar navbar-default">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnavi">
+        <span class="sr-only">メニュー</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+ 
+    <div id="gnavi" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="check">フォローする</a></li>
+        <li><a href="check2">解除する</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="jumbotron text-center" style="padding:10px">
+    <h2>Twitter フォロワーツール<h2>
+    <p>キーワードに関連するユーザを検索し、フォローします<p>
+  </div>
+
+  <div class="container" ng-controller="checkController" >
+
+    <div class="row">
+      <div class="col-xs-4 border1px">
+        <div class="m20">
+          <h3>キーワード指定を指定して検索</h3>
+        </div>
+        <div class="radio text-left m20">
+          <p><b>複数キーを指定する時</b></p>
+          <label>
+            <input type="radio" name="optradio" value="and" ng-model="expr">AND(両方含む)
+          </label>
+          <br>
+          <label>
+            <input type="radio" name="optradio" value="or" ng-model="expr">OR(どちらかを含む)
+          </label>
+        </div>
+        <div class="m20">
+          <p><b>キーワード（複数指定する場合は改行してください）</b></p>
+          <textarea style="width:100%" ng-model="words" ng-change="divide()"></textarea>
+          <button class="btn btn-info" style="margin:5px" ng-repeat="data in word_list track by $index">
+            &nbsp;{{data}}&nbsp;
+          </button>
+        </div>
+        <div class="m20">
+          <p><b>ユーザ検索(最大50人まで)</b></p>
+          <input id="num" name="num" type="number" ng-model="num"></input>&nbsp;人分の&nbsp;
+          <button class="btn btn-primary" sssstyle="width:100%" ng-click="f_send_words()" ng-disabled="word_list.length===0">リストアップ</button>
+        </div>
+      </div>
+      <div class="col-xs-8 text-left border1px" style="padding-left:20px">
+        <div class="m20">
+          <h3>検索結果(該当ユーザリスト)</h3>
+        </div>
+        <div ng-show="user_list.length===0">
+          <p><b>該当ユーザなし</b></p>
+        </div>
+        <ul class="list-group overthrow m20" style="max-height:500px">
+          <li class="list-group-item" ng-repeat="data in user_list track by $index">
+            ID:{{data.user.id}}
+            <!--datas:{{data}}-->
+            <table border="1">
+              <tr><td nowrap> &nbsp;名前 </td><td> &nbsp;{{data.user.name}}</td></tr>
+              <tr><td nowrap> &nbsp;@ </td><td> &nbsp;{{data.name}}</td></tr>
+              <tr><td nowrap> &nbsp;TEXT </td><td> &nbsp;{{data.text}}</td></tr>
+              <tr><td nowrap> &nbsp;プロフィール&nbsp; </td><td> &nbsp;{{data.user.description}}</td></tr>
+            </table>
+            <button class="btn btn-warning" style="margin-top:5px" ng-click="f_add_targets(data)" ng-show="targets.indexOf(data.user.id)===-1">
+              フォロー対象として選択していない
+            </button>
+            <button class="btn btn-primary" style="margin-top:5px" ng-click="f_rm_targets(data)" ng-show="targets.indexOf(data.user.id)!==-1">
+              フォロー対象として選択中
+            </button>
+          </li>
+        </ul>
+
+        <div class="m20" ng-hide="user_list.length===0">
+          <label> {{targets.length}}人選択 </label>
+          <button class="btn btn-primary pull-right" style="margin:0px 5px" ng-click="f_all_targets()">全員選択</button>
+          <button class="btn btn-warning pull-right" style="margin:0px 5px" ng-click="f_reset_targets()">全員解除</button>
+        </div>
+        <div class="m20" ng-hide="user_list.length===0">
+          <button class="btn btn-primary" style="width:100%" ng-click="f_follow()" ng-disabled="targets.length===0">フォロー</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

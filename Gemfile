@@ -1,6 +1,12 @@
 source 'https://rubygems.org'
 
 
+gem 'twitter'
+gem 'mongo', '1.12.1'
+gem 'bson_ext', '1.12.1'
+
+gem 'jquery-turbolinks'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.7'
 # Use sqlite3 as the database for Active Record
@@ -32,12 +38,18 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'pry-rails', group: [:development, :test]
+gem 'pry-byebug', group: [:development, :test]
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
 
 group :development do
+
+  gem 'bower-rails'
+
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

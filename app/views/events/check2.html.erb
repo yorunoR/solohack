@@ -1,0 +1,65 @@
+<div>
+
+  <nav class="navbar navbar-default">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#gnavi">
+        <span class="sr-only">メニュー</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+ 
+    <div id="gnavi" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li><a href="check">フォローする</a></li>
+        <li><a href="check2">解除する</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="jumbotron text-center" style="padding:10px">
+    <h2>Twitter フォロワーツール<h2>
+    <p>フォローしたがフォロワーになってくれなかった人を削除する<p>
+  </div>
+
+  <div class="container" ng-controller="checkController" >
+
+    <div class="row">
+      <div class="col-xs-4 text-center border1px" style="padding:30px">
+        <div class="row m20">
+          <div class="col-xs-12 text-center m20">
+            <label>フォロー解除</label>
+            <br> <br>
+            <input id="num" size="5" type="number" name="num" type="text" ng-model="past"></input>
+            &nbsp;日以前に<br><br>フォローしたユーザを&nbsp;
+            <button class="btn btn-primary" ng-click="f_users()">リストアップ</button>
+          </div>
+        </div>
+        <button class="btn btn-primary" style="width:100%" ng-click="f_delete()" ng-disabled="delete_list.length===0">
+            フォロワーでないユーザのフォローを外す
+        </button>
+    </div>
+    <div class="col-xs-8 text-left border1px" style="padding:30px;">
+      <div>
+        <label>削除リスト</label>
+        <br>
+        <label> 対象{{delete_list.length}}人 </label>
+      </div>
+      <div ng-show="delete_list.length===0"> 該当ユーザなし </div>
+      <ul class="list-group overthrow" style="max-height:500px">
+          <li class="list-group-item" ng-repeat="data in delete_list track by $index">
+              ID:{{data.user_id}} --- フォロワー？
+              <label ng-show="data.follower_flag" style="color:blue"> ON </label>
+              <label ng-hide="data.follower_flag" style="color:red"> OFF </label>
+              <table border="1">
+              <tr><td nowrap> &nbsp;名前 </td><td> &nbsp;{{data.datas.name}}</td></tr>
+              <tr><td nowrap> &nbsp;@ </td><td> &nbsp;{{data.datas.at}}</td></tr>
+                  <tr><td nowrap> &nbsp;TEXT </td><td> &nbsp;{{data.datas.text}}</td></tr>
+                  <tr><td nowrap> &nbsp;プロフィール&nbsp; </td><td> &nbsp;{{data.datas.profile}}</td></tr>
+              </table>
+          </li>
+      </ul>
+    </div>
+  </div>
+</div>
