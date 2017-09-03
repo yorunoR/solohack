@@ -1,28 +1,15 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+twitter で キーワードで検索してヒットした方を
+まとめてフォローします。
 
-* Ruby version
+また、まとめて解除できます。
 
-* System dependencies
+以下の環境変数を自身の環境に合わせて設定してください。
+TWITTER_CONSUMER_KEY=xxxxxxxxxxxxxxxaylf6SiA1i
+TWITTER_CONSUMER_SECRET=btkMXKDWYUZxxxxxxxxxxxxxxxhJYJxxxxxxxxxxxxxxx67qep
+TWITTER_ACCESS_TOKEN=29xxxxxxxxxxxxxxx3u7XNyT20Xaxxxxxxxxxxxxxxxlmjk3vu
+TWITTER_ACCESS_TOKEN_SECRET=CdxxxxxxxxxxxxxxxKHAUwcJnxjLlcnxxxxxxxxxhmHbr
+TWITTER_USER=Yxxxxsh
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
