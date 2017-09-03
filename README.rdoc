@@ -14,3 +14,6 @@ twitter で キーワードで検索してヒットした方を
   TWITTER_ACCESS_TOKEN_SECRET=CdxxxxxxxxxxxxxxxKHAUwcJnxjLlcnxxxxxxxxxhmHbr
   TWITTER_USER=Yxxxxsh
 
+
+動作しているサイト
+ * http://www.gemvil.site/
